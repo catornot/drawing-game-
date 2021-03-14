@@ -1,0 +1,263 @@
+<MainMenu>
+	name: "mainmenu"
+
+	ipnum: ipnum
+	nickname: nickname
+
+
+	FloatLayout:
+
+		Widget:
+
+			canvas.before:
+
+				Rectangle:
+					source: "image.png"
+					size: self.size
+					pos: self.pos
+
+        Label:
+
+        	canvas.before:
+
+            	Color:
+            		rgba: 0.1, 0.1, 0.1, 0.2
+
+            	Rectangle:
+            		pos: self.pos
+            		size: self.size
+
+            text:"NickName: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.9}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: nickname
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.45 , "top":0.9}
+            size_hint: 0.4, 0.15
+
+        Label:
+
+        	canvas.before:
+
+            	Color:
+            		rgba: 0.2, 0.2, 0.2, 0.2
+
+            	Rectangle:
+            		pos: self.pos
+            		size: self.size
+
+            text:"Ip: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.7}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: ipnum
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.45, "top":0.7}
+            size_hint: 0.4, 0.15
+
+        Button:
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.2
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Connect"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.ConnectBtn()
+
+
+<Painterwidget>
+	name: "painter"
+
+	FloatLayout:
+		Widget:
+			size_hint: 1,0.8
+			pos_hint: {"left":1,"top":1}
+
+
+			canvas:
+
+				Rectangle:
+					size: self.size
+					pos: self.pos
+		Button:
+			size_hint: 0.2,0.2
+			text:"clear"
+			on_release:
+				root.erasor()
+
+		Button:
+			size_hint: 0.2,0.2
+			pos_hint: {'x':0.2,"bottom":1}
+			text: "color 1"
+			on_release:
+				root.color1()
+
+		Button:
+			size_hint: 0.2,0.2
+			pos_hint: {'x':0.4,"bottom":1}
+			text: "color 2"
+			on_release:
+				root.color2()
+
+		Button:
+			size_hint: 0.2,0.2
+			pos_hint: {'x':0.6,"bottom":1}
+			text: "submit"
+			on_release:
+				root.submit()
+
+<WaitingMenu>
+    name:'wait'
+    FloatLayout:
+        Widget:
+            size_hint: 1,1
+            pos_hint: {"left":1,"top":1}
+
+
+            canvas:
+
+                Color:
+                    rgb:(0,0.3,1,1)
+
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+        Label:
+
+            text:"! Waiting !"
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.4, "top":0.6}
+            size_hint: 0.20, 0.20
+
+<VoteMenu>
+    name:'vote'
+
+    vote: vote
+    FloatLayout:
+        Widget:
+            size_hint: 1,1
+            pos_hint: {"left":1,"top":1}
+
+
+            canvas:
+
+                Color:
+                    rgb:(0.3,0.3,1,1)
+
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+        Label:
+
+            canvas.before:
+
+                Color:
+                    rgba: 0.2, 0.2, 0.2, 0.2
+
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            text:"Your vote : "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.7}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: vote
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.45, "top":0.7}
+            size_hint: 0.4, 0.15
+
+        Button:
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.2
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "vote"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.VoteBtn()
+
+
+<ChooseMenu>
+    name:'c'
+
+    FloatLayout:
+        Widget:
+            size_hint: 1,1
+            pos_hint: {"left":1,"top":1}
+
+
+            canvas:
+
+                Color:
+                    rgb:(0.3,0.3,1,1)
+
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+        Button:
+            pos_hint:{"x":0,"y":0}
+            size_hint: 1, 0.2
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "1"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.CBtn1()
+
+        Button:
+            pos_hint:{"x":0,"y":0.18}
+            size_hint: 1, 0.18
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "2"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.CBtn2()
+
+        Button:
+            pos_hint:{"x":0,"y":0.18*2}
+            size_hint: 1, 0.18
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "3"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.CBtn3()
+
+        Button:
+            pos_hint:{"x":0,"y":0.18*3}
+            size_hint: 1, 0.18
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "4"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.CBtn4()
+
+        Button:
+            pos_hint:{"x":0,"y":0.18*4}
+            size_hint: 1, 0.18
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "5"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.CBtn5()
+
+        Button:
+            pos_hint:{"x":0,"y":0.9}
+            size_hint: 1, 0.1
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "6"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.CBtn6()
+
